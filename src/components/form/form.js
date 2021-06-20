@@ -12,13 +12,13 @@ class Form extends React.Component{
 
 
 
-    handelInput(event){
+    handelInput =  (event)=>{
 
         this.setState({url:event.target.value})
 
     }
 
-    handelMethod(event){
+    handelMethod = (event)=>{
         
         this.setState({method:event.target.value})
     }
@@ -43,7 +43,7 @@ class Form extends React.Component{
             </form>
 
             <div>
-                <textarea name="outForm" id="" cols="400" rows="400">{this.state.method} <span>  </span> {this.state.url}  </textarea>
+                <p>{this.state.method} {this.state.url} </p>
             </div>
         </div>
         )

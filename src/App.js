@@ -7,11 +7,11 @@ import Form from './components/form/form.js';
 
 function App() {
   return (
-    <React.Fragment>
+    <div className='app' >
     <Header />
     <Form />
     <Footer />
-  </React.Fragment>
+   </div>
   )
   
 }
