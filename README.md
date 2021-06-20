@@ -4,8 +4,8 @@
 
 ### Author: Mohammad Quthama
 
-- [submission PR](https://github.com/mohammad-qethama/api-server/pull/1)
-- [master-deployment](https://api-server-maq.herokuapp.com/)
+- [submission PR](https://github.com/mohammad-qethama/resty/pull/1)
+- [master-deployment](https://codesandbox.io/s/eager-bas-hnrq7?file=/src/index.js)
 
 ### Setup
 
@@ -17,7 +17,7 @@
 - react-dom.
 - react-scripts.
 - web-vitals
-- morgan
+- node-sass@4.14.1
 
 #### Devdependencies
 
@@ -28,10 +28,6 @@
 - `npm start`
 
 - find the app @(https:localhost/:3000)
-
-
-
-
 
 #### UML
 
