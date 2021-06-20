@@ -1,5 +1,5 @@
 import React from 'react';
-//import './form.scss';
+import './form.scss';
 
 class Form extends React.Component{
     constructor(props){
@@ -42,8 +42,8 @@ class Form extends React.Component{
                 <label for="DELETE">DELETE</label>
             </form>
 
-            <div>
-                <p>{this.state.method} {this.state.url} </p>
+            <div className='textA'>
+            <p>{this.state.method} {this.state.url} </p>
             </div>
         </div>
         )
