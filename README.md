@@ -1,11 +1,9 @@
-# LAB - 04
+# LAB - Class:27
 
-## Deployment Test
+## Author: Mohammad Quthama
 
-### Author: Mohammad Quthama
-
-- [submission PR](https://github.com/mohammad-qethama/resty/pull/1)
-- [master-deployment](https://codesandbox.io/s/eager-bas-hnrq7?file=/src/index.js)
+- [submission PR](https://github.com/mohammad-qethama/resty/pull/2)
+- [master-deployment](https://mohammad-qethama.github.io/resty/)
 
 ### Setup
 
@@ -16,12 +14,16 @@
 - react.
 - react-dom.
 - react-scripts.
+- react-pre
 - web-vitals
 - node-sass@4.14.1
+- superagent
+- react-json-pretty
 
 #### Devdependencies
 
 - eslint
+- gh-pages
 
 #### Running the app
 
