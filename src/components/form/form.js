@@ -1,4 +1,5 @@
 import React from 'react';
+import Superagent from 'superagent';
 import './form.scss';
 
 class Form extends React.Component{
@@ -22,29 +23,43 @@ class Form extends React.Component{
         
         this.setState({method:event.target.value})
     }
+    handelSubmit =  async (event)=>{
+        event.preventDefault();
+        let classMethod = this.method;
+        let raw =  await Superagent.get(this.state.url,{
+                      
+        })
+        let classHeaders = {
+            Headers:raw.headers
+        }
+        let classResults =  {
+            Response:raw.body.results
+        }
+        console.log(raw.headers)
+        this.props.handler(raw.body.count,classResults,classHeaders)
+        
+    }
 
     render(){
         return (
         <div >
-            <form className= 'formURL' action={this.state.method}>
-                <label for="url">URL</label>
+            <form className= 'formURL' action={this.state.method} onSubmit={this.handelSubmit}>
+                <label htmlFor="url">URL</label>
                 <input onChange={this.handelInput} type="url"  name="url"/>
                 <input type="submit" value="GO" />
             </form>
             <form className='radioForm' onChange={this.handelMethod} >
                 <input type="radio" id="GET" name="gender" value="GET"/>
-                <label for="GET">GET</label>
+                <label htmlFor="GET">GET</label>
                 <input type="radio" id="POST" name="gender" value="POST"/>
-                <label for="POST">POST</label>
+                <label htmlFor="POST">POST</label>
                 <input type="radio" id="PUT" name="gender" value="PUT"/>
-                <label for="PUT">PUT</label>
+                <label htmlFor="PUT">PUT</label>
                 <input type="radio" id="DELETE" name="gender" value="DELETE"/>
-                <label for="DELETE">DELETE</label>
+                <label htmlFor="DELETE">DELETE</label>
             </form>
 
-            <div className='textA'>
-            <p>{this.state.method} {this.state.url} </p>
-            </div>
+            
         </div>
         )
   
