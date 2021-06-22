@@ -1,9 +1,9 @@
-# LAB - Class:27
+# LAB - Class:28
 
 ## Author: Mohammad Quthama
 
-- [submission PR](https://github.com/mohammad-qethama/resty/pull/2)
-- [master-deployment](https://mohammad-qethama.github.io/resty/)
+- [submission PR](https://github.com/mohammad-qethama/resty/pull/3)
+- [master-deployment](https://60d245f18df3a519d564d53d--blissful-torvalds-1a90d8.netlify.app/)
 
 ### Setup
 
@@ -19,11 +19,12 @@
 - node-sass@4.14.1
 - superagent
 - react-json-pretty
+- react-promise-tracker
+- react-loader-spinner
 
 #### Devdependencies
 
 - eslint
-- gh-pages
 
 #### Running the app
 
@@ -33,4 +34,4 @@
 
 #### UML
 
-![UML Diagram](uml.jpg)
+![UML Diagram](21.jpg)
