@@ -5,7 +5,7 @@ class History extends React.Component {
    this.props.route(req);
  }
   render() {
-      console.log("keys ", Object.keys(localStorage).toString());
+      // console.log("keys ", Object.keys(localStorage).toString());
       return (
      <div>
        {

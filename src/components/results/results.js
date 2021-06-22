@@ -4,7 +4,7 @@ import './results.scss';
 class Results extends React.Component {
 
   render() {
-      console.log("child : ", this.props.results)
+      // console.log("child : ", this.props.results)
       return (
          <div className='results'>
           <h3> Count:{this.props.count}</h3>

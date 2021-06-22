@@ -6,7 +6,7 @@ import Results from './components/results/results.js';
 import If from './components/if/if.js';
 import LoadingIndicator from './components/promisesTracker/promisesTracker.js';
 import History from './components/history/history.js'
-import Loader from 'react-loader-spinner';
+// import Loader from 'react-loader-spinner';
 import './App.scss'
 
 class App extends React.Component{
@@ -27,7 +27,7 @@ class App extends React.Component{
    
   }
   handleRoutes = (string) => {
-    console.log('inAPP',string);
+    // console.log('inAPP',string);
 
   }
 

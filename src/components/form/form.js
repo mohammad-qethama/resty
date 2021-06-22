@@ -41,36 +41,36 @@ class Form extends React.Component{
                 await trackPromise(
                     Superagent.get(url).then(data => {
                      raw = data;
-                     console.log('from raw',raw)
+                    //  console.log('from raw',raw)
                  } ));
             break; 
             case 'POST':
                 await trackPromise(
                     Superagent.post(url).then(data => {
                      raw = data;
-                     console.log('from raw',raw)
+                    //  console.log('from raw',raw)
                  } ));
             break;
             case 'PUT':
                 await trackPromise(
                     Superagent.put(url).then(data => {
                      raw = data;
-                     console.log('from raw',raw)
+                    //  console.log('from raw',raw)
                  } ));
             break;
             case 'DELETE':
                 await trackPromise(
                     Superagent.delete(url).then(data => {
                      raw = data;
-                     console.log('from raw',raw)
+                    //  console.log('from raw',raw)
                  } ));
             break;
             default:
             break;
         } }catch (error) {
-           console.log('error',error);
+        //    console.log('error',error);
         }
-        console.log(raw)
+        // console.log(raw)
         if (raw){
         
         let classHeaders = {
@@ -87,7 +87,7 @@ class Form extends React.Component{
         propHandler(raw.body.count,classResults,classHeaders,true)
        }
        else{
-        console.log('invalid method or/and url')
+        // console.log('invalid method or/and url')
         propHandler({},{},{},false)
        }
      }
