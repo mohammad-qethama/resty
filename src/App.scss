@@ -6,3 +6,10 @@ body{
   grid-template-rows: 20% 80% 20%;
 
 }
+.outputArea{
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-grow:4 4;
+}
