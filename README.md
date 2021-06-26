@@ -3,7 +3,7 @@
 ## Author: Mohammad Quthama
 
 - [submission PR](https://github.com/mohammad-qethama/resty/pull/3)
-- [master-deployment](https://60d245f18df3a519d564d53d--blissful-torvalds-1a90d8.netlify.app/)
+- [master-deployment](https://blissful-torvalds-1a90d8.netlify.app/)
 
 ### Setup
 
@@ -21,6 +21,7 @@
 - react-json-pretty
 - react-promise-tracker
 - react-loader-spinner
+- react-router-dom
 
 #### Devdependencies
 
@@ -34,4 +35,4 @@
 
 #### UML
 
-![UML Diagram](21.jpg)
+![UML Diagram](323.jpg)
