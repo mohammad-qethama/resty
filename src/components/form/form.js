@@ -8,29 +8,52 @@ class Form extends React.Component{
         super(props);
         this.state ={
             url:'',
-            method:''
+            method:'',
+            dataString:''
+        }
+    }
+    handleChange = (e) => {
+     this.setState({url:e.target.value});
+    }
+    componentDidUpdate(prevProps){
+        console.log('form',this.props.urlfromHP);
+        if(prevProps.url !== this.props.url){
+            this.setState({url:this.props.url});
+
+        }
+       
+
+    }
+    componentDidMount(){
+        if(this.props.urlfromHP){
+            let propsUrl = this.props.urlfromHP.split(' ')[0];
+            this.setState({url:propsUrl});
+
         }
     }
 
-
-
     handleHistory= () => {
-        this.props.history(true)
+        this.props.history(true);
 
     }
     handelSubmit =  async (event)=>{
         event.preventDefault();
-         this.setState((prevState,props)=> {return {method:event.target.method.value,url:event.target.url.value}}, () => callMethods(this.state.method,this.state.url))
-        
+        this.setState((prevState,props)=> {return {method:event.target.method.value,url:event.target.url.value,dataString:event.target.body.value}}, () => callMethods(this.state.method,this.state.url,this.state.dataString))
         
         let raw;
         let classMethod;
         const propHandler = (prop1,prop2,prop3,prop4)=>this.props.handler(prop1,prop2,prop3,prop4);
         propHandler({},{},{},false)
-
-       async function callMethods(method,url){
+        const errorHandler = (error) => this.props.errorH(error)
+       async function callMethods(method,url,body){
         try {
-        
+            if(body){
+                try {
+                    JSON.parse(body);
+                    console.log('sadness',body);
+                } catch (error) {
+                    errorHandler(error)                }
+            }
 
           classMethod = method;
          
@@ -42,35 +65,41 @@ class Form extends React.Component{
                     Superagent.get(url).then(data => {
                      raw = data;
                     //  console.log('from raw',raw)
-                 } ));
+                } ).catch(error =>{return errorHandler(error)}));
             break; 
             case 'POST':
                 await trackPromise(
-                    Superagent.post(url).then(data => {
-                     raw = data;
-                    //  console.log('from raw',raw)
-                 } ));
+                    Superagent.post(url).set('Content-Type', 'application/json')
+                    .accept('application/json')
+                    .send(body).then(data => {
+                        console.log(data.body);
+                        raw =data;
+                 } ).catch(error =>{console.log(error)}));
             break;
             case 'PUT':
                 await trackPromise(
-                    Superagent.put(url).then(data => {
+                    Superagent.put(url).set('Content-Type', 'application/json').accept('application/json')
+                    .send(body).then(data => {
                      raw = data;
-                    //  console.log('from raw',raw)
-                 } ));
-            break;
+                     console.log('from raw PUT',raw)
+                } ).catch(error =>{errorHandler(error)}));
+                break;
             case 'DELETE':
                 await trackPromise(
                     Superagent.delete(url).then(data => {
                      raw = data;
                     //  console.log('from raw',raw)
-                 } ));
+                } ).catch(error =>{return errorHandler(error)}));
             break;
             default:
             break;
         } }catch (error) {
-        //    console.log('error',error);
+            errorHandler(error)
         }
         // console.log(raw)
+        try {
+            
+        
         if (raw){
         
         let classHeaders = {
@@ -83,25 +112,30 @@ class Form extends React.Component{
         if (raw.body){
              bodyString = JSON.stringify(raw.body)
         }
-        localStorage.setItem(`${url} ${method}`,`${url} ${method} ${bodyString}`)
+        localStorage.setItem(`${url} ${method}`,`${bodyString}`)
         propHandler(raw.body.count,classResults,classHeaders,true)
        }
        else{
-        // console.log('invalid method or/and url')
-        propHandler({},{},{},false)
+        errorHandler('invalid method or url')
+        
+
        }
+    } catch (error) {
+        errorHandler(error)    
+      }
      }
     }
-
+    
     render(){
+        console.log(this.props.urlfromHP)
         return (
         <div >
-            <form className= 'formURL' action={this.state.method} onSubmit={this.handelSubmit}>
+            <form className= 'formURL' action={this.state.method} onSubmit={this.handelSubmit} >
                 <label htmlFor="url">URL</label>
-                <input  type="url"  name="url" />
+                <input  type="url"  name="url" value={this.state.url }  onChange = {this.handleChange}/>
                 <input type="submit" value="GO" />
                 <br />
-                <input type="radio" id="GET" name="method" value="GET"/>
+                <input type="radio" id="GET" name="method" value="GET" defaultChecked/>
                 <label htmlFor="GET">GET</label>
                 <input type="radio" id="POST" name="method" value="POST"/>
                 <label htmlFor="POST">POST</label>
@@ -109,6 +143,8 @@ class Form extends React.Component{
                 <label htmlFor="PUT">PUT</label>
                 <input type="radio" id="DELETE" name="method" value="DELETE"/>
                 <label htmlFor="DELETE">DELETE</label>
+                <br />
+                <input type="text"  id="dataForm" name="body"  />
             </form>
             <button onClick={this.handleHistory}>show history</button>
             

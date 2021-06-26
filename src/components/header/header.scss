@@ -1,7 +1,6 @@
 header{
   height:fit-content;
   font-size: 33px;
-  background-color: #00ffff;
   color:black;
 }
 h1{
@@ -9,4 +8,21 @@ h1{
   font-size: 50px;
   color:black; 
   text-align:center;
+  background-color: #00ffff;
+  margin:0;
+
+}
+nav{
+  
+  display: flex;
+  background-color: #ffdab9;
+}
+nav>p>a{
+    font-size: 25px;
+    text-decoration: none;
+    font-style: unset;
+    cursor: pointer ;
+    color: black;
+    margin: 3rem;
+ // clear: both;
 }
